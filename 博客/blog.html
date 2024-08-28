@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>博客</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #fff;
+            background-color: #000;
+        }
+        header {
+            background-color: #333;
+            padding: 10px;
+            text-align: center;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+        .container {
+            padding: 20px;
+        }
+        .editable {
+            border: 1px solid #333;
+            padding: 10px;
+            min-height: 100px;
+            background-color: #222;
+            margin-bottom: 20px;
+        }
+        .add-button {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 5px 10px;
+            background-color: #555;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        .add-button:hover {
+            background-color: #777;
+        }
+        .file-input {
+            margin-top: 10px;
+        }
+        .media {
+            margin-top: 10px;
+        }
+        .media img, .media video {
+            max-width: 100%;
+            height: auto;
+        }
+        footer {
+            background-color: #333;
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="main.html">主页</a>
+            <a href="index.html">关于我</a>
+            <a href="blog.html">博客</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <section id="blog">
+            <h1>博客</h1>
+            <div id="blog-content">
+                <div class="editable" contenteditable="true">
+                    这里是博客文章的内容。你可以在这里编辑内容。
+                </div>
+            </div>
+            <button class="add-button" onclick="addBlogPost()">添加博客文章</button>
+            <input type="file" id="file-upload" class="file-input" accept="image/*,video/*" onchange="handleFileUpload(event)">
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 你的名字</p>
+    </footer>
+
+    <script>
+        function addBlogPost() {
+            const blogContent = document.getElementById('blog-content');
+            const newPost = document.createElement('div');
+            newPost.className = 'editable';
+            newPost.contentEditable = 'true';
+            newPost.innerHTML = '这里是新的博客文章内容。你可以在这里编辑内容。';
+            blogContent.appendChild(newPost);
+        }
+
+        function handleFileUpload(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const mediaContainer = document.createElement('div');
+                mediaContainer.className = 'media';
+                const fileURL = URL.createObjectURL(file);
+
+                if (file.type.startsWith('image/')) {
+                    const img = document.createElement('img');
+                    img.src = fileURL;
+                    mediaContainer.appendChild(img);
+                } else if (file.type.startsWith('video/')) {
+                    const video = document.createElement('video');
+                    video.controls = true;
+                    video.src = fileURL;
+                    mediaContainer.appendChild(video);
+                }
+
+                document.getElementById('blog-content').appendChild(mediaContainer);
+                event.target.value = ''; // Clear file input
+            }
+        }
+    </script>
+</body>
+</html>
