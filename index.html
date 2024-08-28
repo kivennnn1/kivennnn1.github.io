@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>关于我</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #fff;
+            background-color: #000;
+        }
+        header {
+            background-color: #333;
+            padding: 10px;
+            text-align: center;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+        .container {
+            padding: 20px;
+        }
+        .editable {
+            border: 1px solid #333;
+            padding: 10px;
+            min-height: 100px;
+            background-color: #222;
+        }
+        footer {
+            background-color: #333;
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="main.html">主页</a>
+            <a href="index.html">关于我</a>
+            <a href="blog.html">博客</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <section id="about-me">
+            <h1>关于我</h1>
+            <div class="editable" id="about-me-content" contenteditable="true">
+                这里是关于我的介绍。你可以在这里编辑内容。
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 你的名字</p>
+    </footer>
+</body>
+</html>
